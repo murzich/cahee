@@ -138,9 +138,10 @@ body {
 	position: relative;
 	z-index: 4;
 	// FIX IT: makes extra margin which makes a horisontal scroll
-	width: 100vw;
+	// width: 100vw; //temp
 	margin: 0 auto;
-	background: rgba(255,255,255,1);
+	background: #f9f8fb;
+	// background: rgba(255,255,255,1);
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 	        box-sizing: border-box;
@@ -299,22 +300,22 @@ body {
 	background: #70BFFF;
 }
 .services_wrap {
-	width: 1300px;
+	// width: 1300px;
 	height: 100%;
-	margin: 0 auto;
+	// margin: 0 auto;
 	display: flex;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
-	-webkit-align-items: center;
-	        align-items: center;
+	// -webkit-justify-content: space-between;
+	justify-content: space-between;
+	// -webkit-align-items: center;
+	align-items: center;
 }
 .services_menu {
 	height: 500px;
 	display: flex;
-	-webkit-flex-direction: column;
-	    -ms-flex-direction: column;
+	// -webkit-flex-direction: column;
+	    // -ms-flex-direction: column;
 	        flex-direction: column;
-	-webkit-justify-content: space-around;
+	// -webkit-justify-content: space-around;
 	            justify-content: space-around;
 	margin: auto;
 }
@@ -341,7 +342,7 @@ body {
 .category_link {
 	width: 300px;
 	background: transparent;
-	border-right: 1px solid black;
+	border-right: 1px solid @color-font;
 	text-align: center;
 	line-height: 27px;
 	display: flex;
@@ -355,6 +356,8 @@ body {
 	background: transparent;
 	background-repeat: no-repeat;
 	background-position: center;
+	margin: auto;
+	text-align: center;
 }
 .category_icon__shopping {
 	background-image: url(../image/icon_shoppind.png);
