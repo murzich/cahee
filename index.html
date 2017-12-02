@@ -13,51 +13,51 @@
 	<!-- HEADER Section -->
 	<header class="header">
 		<div class="header_wrap">
-			<img class="logo" src="image/logo.png" alt="logo">
-			<nav class="menu">
-					<a class="link" href="#home">home</a>
-					<a class="link" href="#about">about</a>
-					<a class="link" href="#services">services</a>
-					<a class="link" href="#gallery">gallery</a>
-					<a class="link" href="#blog">blog</a>
-					<a class="link" href="#contact">contact</a>
+			<img class="header_logo" src="image/logo.png" alt="logo">
+			<nav class="header_menu">
+				<a class="menu_link menu_link__first" href="#home">home</a>
+				<a class="menu_link" href="#about">about</a>
+				<a class="menu_link" href="#services">services</a>
+				<a class="menu_link" href="#gallery">gallery</a>
+				<a class="menu_link" href="#blog">blog</a>
+				<a class="menu_link" href="#contact">contact</a>
 			</nav>
 		</div>
 	</header>
 	<!-- END: HEADER Section -->
 
-<main>
+<main class="main">
 
 	<!-- HERO Section -->
 	<section class="home" id="home">
 		<div class="home_wrap">
 			<div class="home_content">
-				<h2>Fresh Life</h2>
-				<p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-				<button class="button button__home">get free now</button>
+				<h2 class="h2">Fresh Life</h2>
+				<p class="p">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+				<a href="#" class="button button__home">get free now</a>
 			</div>
-			<a class="scroll" href="#about"></a>
+			<a class="home_scroll" href="#about"></a>
 		</div>
 	</section>
 	<!-- END: HERO Section -->
 
 	<!-- ABOUT Section -->
 	<section class="about" id="about">
-		<div class="about_wrap">
-			<img src="image/screen2.png" alt="" class="about_image">
+		<div class="wrapper">
 			<div class="about_content">
-				<h1>About Us</h1>
-				<p>Abore Cahee magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p> <p>Nim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
+				<h1 class="h1">About Us</h1>
+				<p class="p">Abore Cahee magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+				<p class="p">Nim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
 			</div>
 		</div>
-  </section>
+	</section>
 
 	<!-- END: ABOUT Section -->
 
 	<!-- SERVICES Section -->
 
 	<section class="services" id="services">
-		<div class="services_wrap">
+		<div class="wrapper">
 			<div class="services_menu">
 				<a href="#" class="category">
 					<div class="category_link">Online shopping</div>
@@ -108,7 +108,7 @@
 	<!-- GALLERY Section -->
 
 	<section class="gallery" id="gallery">
-		<div class="gallery_wrap">
+		<div class="wrapper">
 			<h1>Gallery</h1>
 			<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 			<div class="gallery_grid">
@@ -130,11 +130,11 @@
 
 	<!-- SUBSCRIBE Section -->
 	<section class="subscribe">
-		<div class="subscribe_wrap">
-			<h3>Subscribe To Us</h3>
-			<p>Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-			<form action="#">
-				<input class="input_email" type="email" placeholder="Your email address">
+		<div class="wrapper">
+			<h3 class="h3">Subscribe To Us</h3>
+			<p class="p subscribe__text">Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+			<form class="subscribe_form" action="#">
+				<input class="subscribe_email" type="email" placeholder="Your email address">
 				<button class="button subscribe_button">subscribe</button>
 			</form>
 		</div>
@@ -143,7 +143,7 @@
 
 	<!-- BLOG Section -->
 	<section class="blog" id="blog">
-		<div class="blog_wrap">
+		<div class="wrapper">
 			<h1>Blog</h1>
 			<p>Dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
 			<div class="blog_conteiner">
@@ -194,7 +194,7 @@
 
 	<!-- CONTACT Section -->
 	<section class="contact" id="contact">
-		<div class="contact_wrap">
+		<div class="wrapper">
 			<h1>Contact</h1>
 			<p>For new projects, ideas, business or anything you'd like to discuss, contact with me!</p>
 			<div class="contact_conteiner">
@@ -220,10 +220,12 @@
 
 	<!-- FOOTER Section -->
 	<footer class="footer">
-		<div class="footer_wrap">
+		<div class="wrapper footer_content">
 			<p>© 2015 Company. All right reserved.</p>
-			<img src="image/logo-small.png" alt="logo">
-			<p>Made with <span>love</span> by <a href="#">Auskteez</a></p>
+			<object data="image/logo.svg" type="image/svg+xml" class="logo footer_logo">
+				<img src="image/logo-small.png" alt="logo">
+			</object>
+			<p>Made with <em class="em">love</em> by <a href="#" class="footer_link">Auskteez</a></p>
 		</div>
 	</footer>
 	<!-- END: FOOTER Seection -->
