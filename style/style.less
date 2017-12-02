@@ -138,9 +138,10 @@ body {
 	position: relative;
 	z-index: 4;
 	// FIX IT: makes extra margin which makes a horisontal scroll
-	width: 100vw;
+	// width: 100vw; //temp
 	margin: 0 auto;
-	background: rgba(255,255,255,1);
+	background: #f9f8fb;
+	// background: rgba(255,255,255,1);
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 	        box-sizing: border-box;
@@ -383,9 +384,9 @@ body {
 	height: 1540px;
 	background: #FFE92F;
 }
-.gallery_wrap {
-	max-width: 1170px;
-	height: 100%;
+.gallery_wrapper {
+	// max-width: 1170px;
+	// height: 100%;
 	margin: 0 auto;
 	padding: 100px 15px 0;
 	text-align: center;
@@ -526,14 +527,11 @@ body {
 	height: 860px;
 	background: #B07CF7;
 }
-.blog_wrap {
-	width: 1300px;
-	height: 100%;
+.blog_wrapper {
 	margin: 0 auto;
 	text-align: center;
 	padding-top: 100px;
-	color: #FFF;
-	font-family: 'Raleway', sans-serif;
+	color: @color-font-inverted;
 }
 .blog_wrap p {
 	width: 45%;
@@ -622,20 +620,21 @@ body {
 	-webkit-background-size: cover;
 	     -o-background-size: cover;
 	        background-size: cover;
-}
-.contact_wrap {
-	width: 1300px;
 	height: 860px;
-	margin: 0 auto;
+}
+.contact_wrapper {
+	// width: 1300px;
+	// margin: 0 auto;
 	text-align: center;
 	padding-top: 100px;
-	color: #262626;
+	color: @color-font;
 }
 .contact_wrap p {
 	width: 360px;
 	margin: 50px auto;
 	line-height: 25px;
 	padding: 0 15px;
+	font: @font-default;
 }
 .contact_conteiner {
 	display: flex;
@@ -658,6 +657,7 @@ body {
 }
 .contact_input {
 	line-height: 55px;
+	height: 55px;
 	border: none;
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
@@ -667,6 +667,9 @@ body {
 	background: rgba(0,196,196,.5);
 	color: #FFF;
 	padding-left: 20px;
+	&__large {
+		height: 250px;
+	}
 }
 .contact_input::placeholder {
 	color: #FFF;
@@ -679,6 +682,7 @@ body {
 	/* END: CONTACT-Form */
 
 .contact_info {
+	font: @font-default;
 	display: flex;
 	-webkit-flex-direction: column;
 	    -ms-flex-direction: column;
