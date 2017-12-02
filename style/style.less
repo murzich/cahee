@@ -371,8 +371,18 @@ body {
 		background: transparent;
 		background-repeat: no-repeat;
 		background-position: center;
-		margin: auto;
 		text-align: center;
+		// misc oprtions for vertical centering icons
+		// padding: 25px 0;
+		margin: 25px 0;
+		// line-height: 150px;
+		vertical-align: middle;
+		&::before {
+			content: '';
+			height: 100%;
+			vertical-align: middle;
+			display: inline-block;
+		}
 		&__shopping {
 			background-image: url(../image/icon_shoppind.png);
 		}
