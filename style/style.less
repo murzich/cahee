@@ -298,79 +298,94 @@ body {
 	width: 100vw;
 	height: 790px;
 	background: #70BFFF;
-}
-.services_wrap {
+	
+	&_wrap {
 	max-width: 1200px;
 	min-width: 980px;
 	height: 100%;
-	margin: auto;
 	display: flex;
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
 	-webkit-align-items: center;
 	        align-items: center;
-
-}
-.services_menu {
-	height: 478px;
-	width: 400px;
-    display: flex;
-	    -webkit-flex-direction: column;
-	    -ms-flex-direction: column;
-	    flex-direction: column;
-	  	-webkit-justify-content: space-around;
-	    	    justify-content: space-around;
-	margin: auto;
+	}
+	&_menu {
+		height: 478px;
+		width: 400px;
+	    display: flex;
+		    -webkit-flex-direction: column;
+		    -ms-flex-direction: column;
+		    flex-direction: column;
+		  	-webkit-justify-content: space-around;
+		    	    justify-content: space-around;
+		margin: auto;
+	}
+	&_item {
+		height: 100%;
+		display: inline-block;
+		color: @color-font-inverted;
+		background: url(../image/screen3.png) 90% 35% no-repeat;
+		line-height: 710px;
+		white-space: nowrap;
+	}
 }
 .sprite_item {
 	fill: #262626;
 }
+.icon_shopping {
+	width: 46.7px;
+	height: 42.8px;
+}
+.icon_product {
+	width: 53.7px;
+	height: 47.6px;
+}
+.icon_delivery {
+	width: 53px;
+	height: 53.2px;
+}
+.icon_organized {
+	width: 54.1px;
+	height: 54.1px;
+}
 
 	/*      SERVICES-Category */
 
-	.category {
-		width: 400px;
+.category {
+	width: 400px;
+	height: 100px;
+	display: flex;
+       -webkit-align-items: center;
+               align-items: center;
+	background: #FFF;
+	font-size: 20px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: bold;
+	-webkit-box-shadow: 2px 2px 5px 0 rgba(0,0,0,.5);
+		    box-shadow: 2px 2px 5px 0 rgba(0,0,0,.5);
+	position: relative;
+	&::after {
+		position: absolute;
+		content: '';
+		background: #9d9d9d;
 		height: 100px;
-		display: flex;
-        -webkit-align-items: center;
-                align-items: center;
-		background: #FFF;
-		font-size: 20px;
-		font-family: 'Raleway', sans-serif;
-		font-weight: bold;
-		-webkit-box-shadow: 2px 2px 5px 0 rgba(0,0,0,.5);
-		        box-shadow: 2px 2px 5px 0 rgba(0,0,0,.5);
-		        position: relative;
-		&::after {
-		    position: absolute;
-		    content: '';
-		    background: #9d9d9d;
-		    height: 100px;
-		    width: 1px;
-		    top: 0;
-		    left: 300px;
+		width: 1px;
+		top: 0;
+		left: 300px;
 		}
+	&:hover {
+		-webkit-box-shadow: 4px 4px 10px 0 rgba(0,0,0,.5);
+	       	 box-shadow: 4px 4px 10px 0 rgba(0,0,0,.5);
 	}
-.category:hover {
-	-webkit-box-shadow: 4px 4px 10px 0 rgba(0,0,0,.5);
-	        box-shadow: 4px 4px 10px 0 rgba(0,0,0,.5);
-}
-.category_link {
-	width: 300px;
-	background: transparent;
-	text-align: center;
-}
-.category_icon {
-	width: 100px;
-	text-align: center;
-}
-.services_item {
-	height: 100%;
-	display: inline-block;
-	color: @color-font-inverted;
-	background: url(../image/screen3.png) 90% 35% no-repeat;
-	line-height: 710px;
-	white-space: nowrap;
+	&_link {
+		width: 300px;
+		background: transparent;
+		text-align: center;
+	}
+	&_icon {
+		width: 100px;
+		text-align: center;
+	}
 }
 
 	/* END: SERVICES-Category */
