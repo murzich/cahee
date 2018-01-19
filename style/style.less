@@ -26,6 +26,11 @@
 // @color-form:          #00c4c4;
 // @color-form-border:   #355b82;
 
+// BREAKPOINTS for @media
+@bp-laptop: 1024px;
+@bp-tablet: 768px;
+@bp-mobile: 425px;
+
 //    mixins
 //the shadow under hovered items
 .shadow() {
@@ -60,21 +65,45 @@
 }
 //wrapper for all section - put it into yours sections
 .wrapper {
-	max-width: 1170px;
-	min-width: 970px;
+	box-sizing: border-box;
+	max-width: 1200px; // from psd template
+	// min-width: 1000px;  // from psd template
 	padding: 0 15px;
 	margin: 0 auto;
 	position: relative;
 	// text-align: center;
+	@media screen and (max-width: @bp-laptop) {
+		max-width: @bp-laptop;
+	}
+	@media screen and (max-width: @bp-tablet) {
+		padding: initial 10px;
+	}
+	@media screen and (max-width: @bp-mobile) {
+		padding: initial 5px;
+	}
 }
 .section-title {
 	.heading();
-	margin: 100px auto 34px;
+	// margin: 100px auto 34px;
+	@media screen and (max-width: @bp-laptop) {
+		.heading(70px, 800);
+		// margin: 80px auto 24px;
+	}
+	@media screen and (max-width: @bp-tablet) {
+		.heading(60px, 800);
+		// margin: 70px auto 24px;
+	}
+	@media screen and (max-width: @bp-mobile) {
+		.heading(50px, 800);
+		// margin: 40px auto 14px;
+	}
 }
 
 .transition(@property:all) {
 	transition: @property .2s ease-out;
 }
+
+* { .transition; }
 // END: Definitions
 //#############################################################################
 a {
@@ -86,14 +115,16 @@ a {
   line-height: 25px;
 }
 .h1 {
+	.section-title;
 	margin: 0;
 	font-size: 90px;
-	font-weight: 800;
+	// font-weight: 800;
 	font-family: 'Raleway', sans-serif;
 }
 .h2 {
+	.section-title;
 	font-size: 60px;
-	font-weight: 800;
+	// font-weight: 800;
 	font-family: 'Raleway', sans-serif;
 }
 .h3 {
@@ -102,13 +133,16 @@ a {
 	font-family: 'Raleway', sans-serif;
 	margin: 0 0;
 }
-.p {
-	font: @font-default;
-}
+
 body {
+	font: @font-default;
+	position: relative;
 	padding-top: 50px;
-	// FIX IT: crutch for rigth bg-color in the 1st section
+	// FIX IT: crutch for right bg-color in the 1st section
 	background: #f9f8fb;
+	@media screen and (max-width: @bp-laptop) {
+		& {padding-top: 5px;}
+	}
 }
 .button {
 	display: inline-block;
@@ -135,22 +169,18 @@ body {
 /*      HEADER */
 
 .header {
+	width: 100%;
 	position: relative;
-	z-index: 4;
+	z-index: 10;
 	// FIX IT: makes extra margin which makes a horisontal scroll
-	// width: 100vw; //temp
 	margin: 0 auto;
-	background: #f9f8fb;
-	// background: rgba(255,255,255,1);
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-	        box-sizing: border-box;
+	background: rgba(249, 248, 251, 0.8);
+	box-sizing: border-box;
 	/*For IE 11*/
 	position: fixed;
 	/*For all browsers*/
 	position: sticky;
 	top: 0;
-
 	&_wrap {
 		.wrapper;
 	}
@@ -159,7 +189,7 @@ body {
 		// width: 127px;
 	}
 	&_menu {
-		display: inline-block;
+		// display: inline-block;
 		float: right;
 		padding-top: 12px;
 	}
@@ -169,62 +199,72 @@ body {
 	position: relative;
 	display: inline-block;
 	margin-left: 33px;
-	&::before {
+	@media screen and (max-width: @bp-tablet) {
+		// visibility: hidden;
+		transition: none;
+		font-size: 10px;
+		margin-left: 6px;
+		letter-spacing: -.05em;
+	}
+	@media screen and (max-width: @bp-mobile) {
 		visibility: hidden;
-			position: absolute;
-			top: -9px;
-			display: block;
-			content: "";
-			width: 1%;
-			height: 3px;
-			background: red
+	}
+	&::before {
+		position: absolute;
+		top: -9px;
+		left: 0;
+		display: block;
+		content: "";
+		width: 100%;
+		height: 3px;
+		background: red;
+		transform: scaleX(0);
+		transition: all .2s ease-out;
 	}
 	&:active:before,
 	&:hover:before {
-		transition: width .5s ease-out;
-		width: 100%;
-		visibility: visible;
+		transform: scaleX(1);
 	}
-	&__first {
+	&:first-of-type {
 		margin-left: 0;
 	}
 }
 
-
 /* END: HEADER */
-//#############################################################################
-/*      HERO */
+
 .main {
-	min-width: 1000px;
+	position: relative;
 }
 
-.home {
-  margin: 0 auto;
-	max-width: 1500px;
-	height: 898px;
-	position: relative;
-	z-index: 3;
+//#############################################################################
+/*      HERO */
 
-	&:before {
-		position: absolute;
-		content: "";
-		max-width: 1500px;
-		height: 1000px;
-		top: -102px;
-    	right: 0;
-    	left: 0;
-    	bottom: 0;
-		z-index: 0;
-		background-image: url(../image/screen1.jpg);
-		background-repeat: no-repeat;
+.home {
+	margin: 0 auto;
+	// max-width: 1500px;
+	// height: 898px;
+	padding-bottom: 330px;
+	position: relative;
+	// top: -102px;
+	// z-index: 3;
+	background-image: url(../image/screen1.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	@media screen and (max-width: @bp-tablet) {
+		height: initial;
+		padding-bottom: 175px;
 	}
+	// TODO: change to background-position;
 	&_wrap {
 		.wrapper;
 		z-index: 5;
 		padding-top: 197px;
+		@media screen and (max-width: @bp-laptop) {
+			padding-top: 50px;
+		}
 	}
 	&_content {
-		width: 400px;
+		max-width: 400px;
 	}
 	&_content .h2 {
 		margin-bottom: 12px;
@@ -239,14 +279,16 @@ body {
 		width: 20px;
 		height: 40px;
 		border: 2px solid #000;
-        border-radius: 25px ;
+		border-radius: 25px ;
 		position: relative;
 		left: 50%;
 		bottom: -290px;
-        box-shadow: 0 0 5px grey inset;
-		animation: scrol 900ms cubic-bezier(0.6, -0.28, 0.735, 0.045) 2.5s infinite;
-    	animation-direction: alternate;
-
+		box-shadow: 0 0 5px grey inset;
+		animation: scroll 900ms cubic-bezier(0.6, -0.28, 0.735, 0.045) 2.5s infinite;
+		animation-direction: alternate;
+		@media screen and (max-width: @bp-tablet) {
+			bottom: -130px;
+		}
 		&:after {
 			position: absolute;
 			display: block;
@@ -258,7 +300,7 @@ body {
 			top: 5px;
 		}
 		&:hover {
-	    animation-play-state: paused;
+			animation-play-state: paused;
 		}
 	}
 }
@@ -267,7 +309,7 @@ body {
 		color: #fff;
 		margin-top: 30px;
 }
-@keyframes scrol {
+@keyframes scroll {
 	0% {transform: translateY(0px);}
 	100% {transform: translateY(15px);}
 }
@@ -284,10 +326,27 @@ body {
 	background-repeat: no-repeat;
 	background-position: ~'calc(50% - 250px)' center;
 	color: @color-font-inverted;
+	@media screen and (max-width: @bp-tablet) {
+		padding-top: 50px;
+		height: unset;
+		background-size: 50%;
+		background-position: ~'calc(50% - 200px)' ~'calc(80% - 210px)';
+	}
+	@media screen and (max-width: @bp-mobile) {
+		background-position: ~'calc(50% - 100px)' ~'calc(25% - 120px)';
+	}
 	&_content {
 		margin-left: auto;
 		width: 42%;
 		max-width: 500px;
+		@media screen and (max-width: @bp-tablet) {
+			width: 100%;
+			text-align: center;
+			margin-right: auto;
+			// color: @color-font;
+			text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+			padding-bottom: 20px;
+		}
 	}
 }
 /* END: ABOUT */
@@ -295,38 +354,38 @@ body {
 /*      SERVICES */
 
 .services {
-	width: 100%;
-	height: 790px;
+	// width: 100%;
+	// height: 790px;
 	background: #70BFFF;
-	
+	background-image: url(../image/screen3.png);
+	background-position: center center;
+	background-repeat: no-repeat;
 	&_wrap {
-	max-width: 1170px;
-	min-width: 970px;
-	height: 100%;
-	display: flex;
-	-webkit-justify-content: space-between;
-	        justify-content: space-between;
-	-webkit-align-items: center;
-	        align-items: center;
+		// max-width: 1170px;
+		// min-width: 970px;
+		// height: 100%;
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		align-items: center;
 	}
 	&_menu {
-		height: 478px;
-		width: 400px;
+		// height: 478px;
+		// width: 400px;
 	    display: flex;
 		    -webkit-flex-direction: column;
 		    -ms-flex-direction: column;
 		    flex-direction: column;
 		  	-webkit-justify-content: space-around;
 		    	    justify-content: space-around;
-		margin: auto;
+		// margin: auto;
 	}
 	&_item {
-		height: 100%;
-		display: inline-block;
+		// height: 100%;
+		// display: inline-block;
 		color: @color-font-inverted;
-		background: url(../image/screen3.png) 90% 35% no-repeat;
-		line-height: 710px;
-		white-space: nowrap;
+		// line-height: 710px;
+		// white-space: nowrap;
 	}
 }
 .sprite_item {
@@ -352,8 +411,8 @@ body {
 	/*      SERVICES-Category */
 
 .category {
-	width: 400px;
-	height: 100px;
+	// width: 400px;
+	// height: 100px;
 	display: flex;
        -webkit-align-items: center;
                align-items: center;
@@ -364,26 +423,26 @@ body {
 	-webkit-box-shadow: 2px 2px 5px 0 rgba(0,0,0,.5);
 		    box-shadow: 2px 2px 5px 0 rgba(0,0,0,.5);
 	position: relative;
-	&::after {
-		position: absolute;
-		content: '';
-		background: #9d9d9d;
-		height: 100px;
-		width: 1px;
-		top: 0;
-		left: 300px;
-		}
+	// &::after {
+	// 	position: absolute;
+	// 	content: '';
+	// 	background: #9d9d9d;
+	// 	// height: 100px;
+	// 	width: 1px;
+	// 	top: 0;
+	// 	// left: 300px;
+	// 	}
 	&:hover {
 		-webkit-box-shadow: 4px 4px 10px 0 rgba(0,0,0,.5);
 	       	 box-shadow: 4px 4px 10px 0 rgba(0,0,0,.5);
 	}
 	&_link {
-		width: 300px;
+		// width: 300px;
 		background: transparent;
 		text-align: center;
 	}
 	&_icon {
-		width: 100px;
+		// width: 100px;
 		text-align: center;
 	}
 }
@@ -395,8 +454,8 @@ body {
 /*      GALLERY */
 
 .gallery {
-	width: 100%;
-	height: 1540px;
+	// width: 100%;
+	// height: 1540px;
 	background: #FFE92F;
 }
 .gallery_wrapper {
@@ -427,7 +486,7 @@ body {
 
 .gallery_grid {
 //   width: 1170px;
-  height: 980px;
+//   height: 980px;
 //   margin: auto;
   display: grid;
 
@@ -493,8 +552,8 @@ body {
 /*      SUBSCRIBE */
 
 .subscribe {
-	width: 100%;
-	height: 360px;
+	// width: 100%;
+	// height: 360px;
 	padding-top: 140px;
 	background: white url(../image/screen5.jpg);
 	background-repeat: no-repeat;
@@ -507,7 +566,7 @@ body {
 	}
 	&_email {
 		box-sizing: border-box;
-		width: 570px;
+		max-width: 570px;
 		height: 55px;
 		border: 1px solid #262626;
 		padding-left: 20px;
@@ -538,16 +597,16 @@ body {
 /*      BLOG */
 
 .description {
-	width: 570px;
-	height:66px;
+	// min-width: 570px;
+	// height:66px;
 	font:@font-default;
 	line-height: 1.5;
 	text-align: center;
 }
 .blog {
 	box-sizing: content-box;
-	width: 100%;
-	height: 864px;
+	// width: 100%;
+	// height: 864px;
 	position: relative;
 	background-color:#b07cf7;
 	font:@font-default;
@@ -560,18 +619,18 @@ body {
 		text-align:center;
 	}	
 	&_wrapper {
-		height:663px;
-		position: absolute;
-		top:82px;
-		left:0;
-		right:0;
+		// height:663px;
+		// position: absolute;
+		// top:82px;
+		// left:0;
+		// right:0;
 	}
 	&_description {
 		margin:26px auto 52px auto;
 	}
 	&_container {
-		width:100%;
-		height: 310px;
+		// width:100%;
+		// height: 310px;
 	}
 	&_button{
 		display: block;
@@ -584,8 +643,8 @@ body {
 		background-color:  #f72b3b;
 		.transition();
 		&:hover{
-			width: 202px;
-			height: 57px;
+			// width: 202px;
+			// height: 57px;
 			cursor:pointer;
 		}
 		&:active {
@@ -596,15 +655,15 @@ body {
 }
 .article {
 	display: inline-block;
-	width: 370/1170*100%;
-	height: 100%;
+	// width: 370/1170*100%;
+	// height: 100%;
 	float: left;
 	font:@font-default;
 	.shadow();
 	img {
 	position: relative;
 	width: 100%;
-	height: 100%;
+	height: auto;
 	
 	}
 	&_date{
@@ -682,8 +741,8 @@ body {
 
 .contact {
 		box-sizing: content-box;
-		width: 100%;
-		height: 866px;
+		// width: 100%;
+		// height: 866px;
 		position: relative;
 		background: url("../image/contact_backgr.jpg")  no-repeat;
 		background-size: cover;
@@ -696,33 +755,33 @@ body {
 		line-height: 100px;
 	}
 	&_wrapper {
-		height:663px - 82px - 26px;
-		position: absolute;
-		top:82px;
-		left:0;
-		right:0;
+		// height:663px - 82px - 26px;
+		// position: absolute;
+		// top:82px;
+		// left:0;
+		// right:0;
 	}
 	&_description{
-		width: 360px;
+		max-width: 360px;
 		margin:26px auto 26px auto;
 		color:  @color-font;
 	}
 	&_container {
 		display: block;
 		box-sizing: border-box;
-		width: 100%;
-		height: 100%;
+		// width: 100%;
+		// height: 100%;
 		padding: 0;
 	}
 	&_form {
-		width: 500/1170*100%;
-		margin:0;
+		// width: 500/1170*100%;
+		margin: 0;
 		box-sizing: inherit;
-		float: left;
+		// float: left;
 	}
 	&_input {
 		display: block;
-		width:100%;
+		// width:100%;
 		box-sizing: inherit;
 		margin-bottom: 15px;
 		padding-left: 20px;
@@ -757,8 +816,8 @@ body {
 	&_info {
 		height: 160/648*100%;
 		box-sizing: border-box;
-		float: left;
-		margin-left: 170/1170*100%;
+		// float: left;
+		// margin-left: 170/1170*100%;
 		padding-left: 3px;
 		font: @font-default;
 		font-size: 20px;
@@ -792,10 +851,10 @@ body {
 	color: @color-font-footer;
 	margin: 0;
 	padding: 0;
-	min-width: 1000px;
+	// min-width: 1000px;
 	font: @font-default;
 	&_content {
-		height: 90px;
+		// height: 90px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
