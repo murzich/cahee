@@ -175,8 +175,14 @@ body {
 	.hover-shadow;
 }
 .button:active {
-    box-shadow: 0 0 0 0 transparent;
+	box-shadow: 0 0 0 0 transparent;
 }
+.em {
+	color: #F24261;
+	font-weight: 700;
+	font-style: normal;
+}
+
 //#############################################################################
 /*      HEADER */
 
@@ -198,7 +204,16 @@ body {
 	}
 	&_logo {
 		display: inline-block;
-		// width: 127px;
+		width: 127px;
+		fill: @color-font;
+		// IE-only CSS hsck
+		@media all and (-ms-high-contrast:none)	{
+			background-image: url(../image/logo.png); /* IE10 */
+			// *::-ms-backdrop, .foo { color: red } /* IE11 */
+			background-repeat: no-repeat;
+			background-position: center;
+			height: 60px;
+		}
 	}
 	&_menu {
 		// display: inline-block;
@@ -866,11 +881,17 @@ body {
 
 .contact {
 		box-sizing: content-box;
-		// width: 100%;
-		// height: 866px;
+		width: 100%;
+		height: 866px;
 		position: relative;
 		background: url("../image/contact_backgr.jpg")  no-repeat;
 		background-size: cover;
+		@media screen and (max-width: @bp-tablet) {
+			height: auto;
+			width: initial;
+			padding-top: 60px;
+			padding-bottom: 30px;
+		}
 	&_h1 {
 		display:block;
 		margin: 0 auto;
@@ -878,18 +899,31 @@ body {
 		font-weight: 700;
 		text-align:center;
 		line-height: 100px;
+		@media screen and (max-width: @bp-tablet) {
+			line-height: initial;
+		}
 	}
 	&_wrapper {
-		// height:663px - 82px - 26px;
-		// position: absolute;
-		// top:82px;
-		// left:0;
-		// right:0;
+		height:663px - 82px - 26px;
+		position: absolute;
+		top:82px;
+		left:0;
+		right:0;
+		@media screen and (max-width: @bp-tablet) {
+			height: auto;
+			position: relative;
+			top: 0;
+			left: 0;
+			right: 0;
+		}
 	}
 	&_description{
 		max-width: 360px;
-		margin:26px auto 26px auto;
+		margin: 26px auto 26px auto;
 		color:  @color-font;
+		@media screen and (max-width: @bp-tablet) {
+			margin: 12px auto;
+		}
 	}
 	&_container {
 		display: block;
@@ -899,15 +933,19 @@ body {
 		padding: 0;
 	}
 	&_form {
-		// width: 500/1170*100%;
+		width: 500/1170*100%;
 		margin: 0;
 		box-sizing: inherit;
-		// float: left;
+		float: left;
+		@media screen and (max-width: @bp-tablet) {
+			float: none;
+			width: 100%;
+		}
 	}
 	&_input {
 		display: block;
-		// width:100%;
-		box-sizing: inherit;
+		width:100%;
+		box-sizing: inherit; 
 		margin-bottom: 15px;
 		padding-left: 20px;
 		font:@font-default;
@@ -917,9 +955,10 @@ body {
 		line-height:50px;
 		border: none;
 		background: rgba(0,196,196,.5);
-		&:not(:last-child){
-			height:50px;
-		}
+		border-left: 4px solid rgba(0,196,196,.5);
+		// &:not(:last-child){
+		height:50px;
+		// }
 		&:last-child {
 			height:250px; 
 			resize: none;
@@ -930,7 +969,6 @@ body {
 		&:hover {
 			cursor: pointer;
 			.hover-shadow();
-
 		}
 		&:focus {
 			font-weight: 700;
@@ -941,13 +979,22 @@ body {
 	&_info {
 		height: 160/648*100%;
 		box-sizing: border-box;
-		// float: left;
-		// margin-left: 170/1170*100%;
+		float: left;
+		margin-left: 170/1170*100%;
 		padding-left: 3px;
 		font: @font-default;
 		font-size: 20px;
 		font-weight: 300;
 		color:  @color-font;
+		@media screen and (max-width: @bp-tablet) {
+			float: none;
+			margin-left: 0px;
+			padding-left: 0px;
+			height: auto;
+			padding: 10px;
+			color: @color-font-inverted;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5)
+		}
 	}
 	&_h2infotype {
 		display: block;
@@ -955,9 +1002,6 @@ body {
 		font-weight: 700;
 		text-transform: uppercase;
 		line-height: 1;
-	}
-
-	&_h2infotype:not(:first-child) {
 		margin-top: 16px;
 		margin-bottom: 0px;
 	}
@@ -976,13 +1020,19 @@ body {
 	color: @color-font-footer;
 	margin: 0;
 	padding: 0;
-	// min-width: 1000px;
 	font: @font-default;
 	&_content {
-		// height: 90px;
+		min-height: 90px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		& p {
+			margin: 0px;
+			font-size: 14px;
+		}
+		@media screen and (max-width: @bp-tablet) {
+			flex-direction: column;
+		}
 	}
 	&_link {
 		color: @color-font-footer;
@@ -992,16 +1042,21 @@ body {
 	}
 	&_logo {
 		width: 64px;
+		fill: @color-font-footer;
+		@media screen and (max-width: @bp-tablet) {
+			height: 32px;
+			order: -1;
+			padding-top: 10px;
+		}
+		// IE-only CSS hack
+		@media all and (-ms-high-contrast:none)	{
+			background-image: url(../image/logo-small.png); /* IE10 */
+			// *::-ms-backdrop, .foo { color: red } /* IE11 */
+			background-repeat: no-repeat;
+			background-position: center;
+			height: 40px;
+		}
 	}
-}
-.em {
-	color: #F24261;
-	font-weight: 700;
-	font-style: normal;
-}
-// SVG internal class
-.logo__svg {
-	fill: @color-font-footer;
 }
 
 /* END: FOOTER */

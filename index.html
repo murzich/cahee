@@ -14,7 +14,16 @@
 	<!-- HEADER Section -->
 	<header class="header">
 		<div class="header_wrap">
-			<img class="header_logo" src="image/logo.png" alt="logo">
+
+			<svg viewBox="0,0,130,52" class="logo header_logo">
+				<use xlink:href="image/logo.svg#cahee"></use>
+			</svg>
+			<!-- [if IE] <img class="header_logo" src="image/logo.png" alt="logo"> -->
+
+			<!-- <object data="image/logo.svg" type="image/svg+xml" class="logo header_logo">
+				<img class="header_logo" src="image/logo.png" alt="logo">
+			</object> -->
+
 			<nav class="header_menu">
 				<a class="menu_link menu_link__first" href="#home">home</a>
 				<a class="menu_link" href="#about">about</a>
@@ -239,9 +248,16 @@
 	<footer class="footer">
 		<div class="wrapper footer_content">
 			<p>© 2015 Company. All right reserved.</p>
-			<object data="image/logo.svg" type="image/svg+xml" class="logo footer_logo">
+
+			<svg viewBox="0,0,130,52" class="logo footer_logo">
+				<use xlink:href="image/logo.svg#cahee"></use>
+			</svg>
+
+			<!-- <object data="image/logo.svg" type="image/svg+xml" class="logo footer_logo">
 				<img src="image/logo-small.png" alt="logo">
 			</object>
+			 -->
+			
 			<p>Made with <em class="em">love</em> by <a href="#" class="footer_link">Auskteez</a></p>
 		</div>
 	</footer>
