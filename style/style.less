@@ -197,8 +197,8 @@ body {
 	/*For IE 11*/
 	position: fixed;
 	/*For all browsers*/
-	position: sticky;
 	top: 0;
+	position: sticky;
 	&_wrap {
 		.wrapper;
 	}
@@ -206,7 +206,8 @@ body {
 		display: inline-block;
 		width: 127px;
 		fill: @color-font;
-		// IE-only CSS hsck
+		// IE-only CSS hack
+		// IE doesn't support SVG <use src="*.svg__#id__" />
 		@media all and (-ms-high-contrast:none)	{
 			background-image: url(../image/logo.png); /* IE10 */
 			// *::-ms-backdrop, .foo { color: red } /* IE11 */
@@ -219,6 +220,10 @@ body {
 		// display: inline-block;
 		float: right;
 		padding-top: 12px;
+		@media screen and (max-width: @bp-mobile) and (-ms-high-contrast:none) {
+			display: none;
+		}
+	
 	}
 }
 .menu_link {
@@ -227,11 +232,17 @@ body {
 	display: inline-block;
 	margin-left: 33px;
 	@media screen and (max-width: @bp-tablet) {
-		// visibility: hidden;
+		transition: none;
+		font-size: 14px;
+		margin-left: 15px;
+		// letter-spacing: -.065em;
+
+	}
+	@media screen and (max-width: 600px) {
 		transition: none;
 		font-size: 10px;
-		margin-left: 6px;
-		letter-spacing: -.05em;
+		margin-left: 4px;
+		letter-spacing: -.07em;
 	}
 	@media screen and (max-width: @bp-mobile) {
 		visibility: hidden;
@@ -355,7 +366,7 @@ body {
 	color: @color-font-inverted;
 	@media screen and (max-width: @bp-tablet) {
 		padding-top: 60px;
-		height: unset;
+		height: auto;
 		background-size: 50%;
 		background-position: ~'calc(50% - 200px)' ~'calc(80% - 210px)';
 	}
@@ -390,13 +401,11 @@ body {
 	@media screen and (max-width: @bp-tablet) {
 		padding-top: 60px;
 		width: initial;
-		height: initial;
-		// background-size: 50%;
+		height: auto;
 		background-position: center 100%;
 	}
 	&_wrap {
 		max-width: 1170px;
-		// min-width: 970px;
 		height: 100%;
 		display: flex;
 		flex-direction: row-reverse;
@@ -415,10 +424,15 @@ body {
 		flex-direction: column;
 		justify-content: space-around;
 		margin: auto;
+		position: relative;
 		@media screen and (max-width: @bp-tablet) {
-			height: initial;
-			width: initial;
+			height: auto;
+			width: auto;
 			margin: 0 auto 30px;
+		}
+		@media screen and (max-width: @bp-tablet) and (-ms-high-contrast:none) {
+			width: 100%;
+			align-items: stretch;
 		}
 	}
 	&_item {
@@ -426,11 +440,18 @@ body {
 		color: @color-font-inverted;
 		line-height: 710px;
 		white-space: nowrap;
+		text-align: center;
+		@media screen and (max-width: @bp-laptop) {
+			padding-left: 10px;
+		}
 		@media screen and (max-width: @bp-tablet) {
-			height: initial;
-			line-height: initial;
+			line-height: auto;
+			white-space: normal;
+			height: auto;
+			line-height: normal;
 			margin-bottom: 17px;
 			text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+			padding-left: 0;
 		}
 	}
 }
@@ -468,9 +489,12 @@ body {
 	box-shadow: 2px 2px 5px 0 rgba(0,0,0,.5);
 	position: relative;
 	@media screen and (max-width: @bp-tablet) {
-		width: initial;
+		width: auto;
 		margin-bottom: 10px;
 		min-height: 75px;
+	}
+	@media screen and (max-width: @bp-tablet) and (-ms-high-contrast:none) {
+		max-width: none;
 	}
 	&:hover {
 		box-shadow: 4px 4px 10px 0 rgba(0,0,0,.5);
@@ -500,12 +524,11 @@ body {
 	height: 1540px;
 	background: #FFE92F;
 	@media screen and (max-width: @bp-tablet) {
-		height: initial;
+		height: auto;
 	}
 }
 .gallery_wrapper {
 	box-sizing: border-box;
-	// width: 100%;
 	height: 100%;
 	margin: 0 auto;
 	padding: 100px 0 10px;
@@ -535,10 +558,8 @@ body {
 
 .gallery_grid {
 	box-sizing: border-box;
-	// min-width: 1170px;
 	min-height: 980px;
 	padding: 0 15px;
-	// margin: auto;
 	// if PixelPerfect will not be good -> grid-columns add extra grid-line for a gap
 	//                                     2fr 1fr 1fr 2fr
 	//                                     and increase start columns and spans in this area at 1
@@ -553,19 +574,25 @@ body {
 		grid-gap: 10px;
 	}
 	@media screen and (max-width: @bp-mobile) {
-		// width: 100%;
 		min-height: 320px;
 		grid-gap: 5px;
+	}
+	// IE grid compatibility breakpoints
+	@media screen and (-ms-high-contrast:none) {
+		height: 960px;
+	}
+	@media screen and (-ms-high-contrast:none) and (max-width: @bp-tablet) {
+		height: 620px;
+	}
+	@media screen and (-ms-high-contrast:none) and (max-width: @bp-mobile) {
+		height: 320px;
 	}
 }
 .grid_element {
 	background-repeat: no-repeat;
 	background-position: center;
-	-webkit-background-size: cover;
-	     -o-background-size: cover;
-	        background-size: cover;
-	-webkit-box-shadow:2px 2px 5px 0 rgba(0,0,0,.5) ;
-	        box-shadow:2px 2px 5px 0 rgba(0,0,0,.5) ;
+	background-size: cover;
+	box-shadow:2px 2px 5px 0 rgba(0,0,0,.5);
 }
 .grid_element:hover {
   -webkit-box-shadow: 4px 4px 10px 0 rgba(0,0,0,.5);
@@ -629,13 +656,11 @@ body {
 	}
 	@media screen and (max-width: @bp-mobile) {
 		background-position: -100% center;
-			// background-position: center center;
 	}
 	&__text {
 		max-width: 570px;
 	}
 	&_form {
-		// box-sizing: content-box;
 		width: 100%;
 		margin-top: 27px;
 		@media screen and (min-width: 580px) {
@@ -687,8 +712,6 @@ body {
 /*      BLOG */
 
 .description {
-	// min-width: 570px;
-	// height:66px;
 	font:@font-default;
 	line-height: 1.5;
 	text-align: center;
@@ -728,8 +751,6 @@ body {
 			position: relative;
 			top: 0;
 			padding-top: 60px;
-			// left: 0;
-			// right: 0;
 		}
 	}
 	&_description {
@@ -771,9 +792,7 @@ body {
 			margin-top: 10px;
 		}
 		&:hover{
-			// width: 202px;
-			// height: 57px;
-			cursor:pointer;
+			cursor: pointer;
 		}
 		&:active {
 			box-shadow: 0 0 0 0 transparent;
@@ -790,7 +809,6 @@ body {
 	.shadow();
 	@media screen and (max-width: @bp-tablet) {
 		width: 100%;
-		// height: auto;
 		float: none;
 	}
 	img {
@@ -827,12 +845,10 @@ body {
 		font-size: 20px;
 		font-weight: 700;
 		line-height: 25px;
-		/*background: blue;*/
 	}
 	&_time-ago {
 		position: absolute;
 		bottom: 17px;
-		/*background: green;*/
 		font:@font-default;
 		color: @color-font-inverted;
 		font-size: 13px;
@@ -843,7 +859,6 @@ body {
 		width: 100%;
 		height: calc(~"100% - 90px - 30px");
 		background: linear-gradient(transparent,#000);
-		/*background: red;*/
 		margin-top: 30px;
 		div {
 			margin: 0 0 0 20px;
@@ -853,7 +868,6 @@ body {
 	}
 	&__hover {
 		width: 100%; 
-		// height: 310px;
 		height: 100%;
 		position: absolute;
 		opacity:0;
@@ -928,8 +942,6 @@ body {
 	&_container {
 		display: block;
 		box-sizing: border-box;
-		// width: 100%;
-		// height: 100%;
 		padding: 0;
 	}
 	&_form {
@@ -955,10 +967,7 @@ body {
 		line-height:50px;
 		border: none;
 		background: rgba(0,196,196,.5);
-		border-left: 4px solid rgba(0,196,196,.5);
-		// &:not(:last-child){
 		height:50px;
-		// }
 		&:last-child {
 			height:250px; 
 			resize: none;
@@ -994,6 +1003,15 @@ body {
 			padding: 10px;
 			color: @color-font-inverted;
 			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5)
+		}
+		// fix iOS safari style for telephone number detection
+		& a[href^="tel"] {
+			color: inherit !important;
+			text-decoration: none !important;
+			font-size: inherit !important;
+			font-family: inherit !important;
+			font-weight: inherit !important;
+			line-height: inherit !important;
 		}
 	}
 	&_h2infotype {
@@ -1049,7 +1067,7 @@ body {
 			padding-top: 10px;
 		}
 		// IE-only CSS hack
-		@media all and (-ms-high-contrast:none)	{
+		@media all and (-ms-high-contrast:none) {
 			background-image: url(../image/logo-small.png); /* IE10 */
 			// *::-ms-backdrop, .foo { color: red } /* IE11 */
 			background-repeat: no-repeat;
