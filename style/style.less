@@ -103,7 +103,7 @@
 	transition: @property .2s ease-out;
 }
 
-* { .transition; }
+// * { .transition; }
 // END: Definitions
 //#############################################################################
 a {
@@ -670,12 +670,13 @@ body {
 	&_email {
 		width: 570px;
 		height: 55px;
+		line-height: 55px;
 		border: 1px solid #262626;
 		padding-left: 20px;
 		margin-right: 20px;
 		vertical-align: middle;
 		border-radius: 0;
-		@media screen and (max-width: @bp-tablet) {
+		@media screen and (max-width: 846px) {
 			width: ~'calc(100% - 230px)';
 		}
 		@media screen and (max-width: 580px) {
@@ -688,7 +689,7 @@ body {
 		}
 		&::placeholder {
 			font-size: 15px;
-			line-height: 27px;
+			line-height: 55px;
 			font-family: 'Raleway', sans-serif;
 			font-weight: 300;
 			color: #262626;
