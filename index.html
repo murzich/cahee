@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Cahee</title>
 	<link rel="stylesheet" href="style/normalize.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Raleway:300,700,800">
@@ -13,7 +14,16 @@
 	<!-- HEADER Section -->
 	<header class="header">
 		<div class="header_wrap">
-			<img class="header_logo" src="image/logo.png" alt="logo">
+
+			<svg viewBox="0,0,130,52" class="logo header_logo">
+				<use xlink:href="image/logo.svg#cahee"></use>
+			</svg>
+			<!-- [if IE] <img class="header_logo" src="image/logo.png" alt="logo"> -->
+
+			<!-- <object data="image/logo.svg" type="image/svg+xml" class="logo header_logo">
+				<img class="header_logo" src="image/logo.png" alt="logo">
+			</object> -->
+
 			<nav class="header_menu">
 				<a class="menu_link menu_link__first" href="#home">home</a>
 				<a class="menu_link" href="#about">about</a>
@@ -58,6 +68,9 @@
 
 	<section class="services" id="services">
 		<div class="wrapper services_wrap">
+			<div class="services_item">
+				<h1 class="h1 h1__white">Our Services</h1>
+			</div>
 			<div class="services_menu">
 				<a href="#" class="category">
 					<div class="category_link">Online shopping</div>
@@ -83,9 +96,6 @@
 						<svg class="icon_organized"><use xlink:href="#icon_organized"/></svg>
 					</div>
 				</a>
-			</div>
-			<div class="services_item">
-				<h1 class="h1 h1__white">Our Services</h1>
 			</div>
 		</div>
 	</section>
@@ -238,9 +248,16 @@
 	<footer class="footer">
 		<div class="wrapper footer_content">
 			<p>© 2015 Company. All right reserved.</p>
-			<object data="image/logo.svg" type="image/svg+xml" class="logo footer_logo">
+
+			<svg viewBox="0,0,130,52" class="logo footer_logo">
+				<use xlink:href="image/logo.svg#cahee"></use>
+			</svg>
+
+			<!-- <object data="image/logo.svg" type="image/svg+xml" class="logo footer_logo">
 				<img src="image/logo-small.png" alt="logo">
 			</object>
+			 -->
+			
 			<p>Made with <em class="em">love</em> by <a href="#" class="footer_link">Auskteez</a></p>
 		</div>
 	</footer>
